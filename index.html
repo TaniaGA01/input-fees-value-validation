@@ -9,48 +9,38 @@
 </head>
 <body>
     <div class="container py-5">
-        
-        <div class="d-lg-flex justify-content-between fees-block my-3 w-100">
-                <p class="text-uppercase m-0">Feed name</p>
-                <div class="ticket-quantity-block d-grid justify-content-center">
-                    <div class="input-group text-center w-75">
-                        <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
-                        <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2" data-montant="0">
-                        <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
-                    </div>
-                    <div class="input-error text-center mt-2 visually-hidden" id="alert">
-                        <small>Only a number value is valid</small>
-                    </div>
+        <div class="d-sm-flex justify-content-between my-3 w-100" id="feesBlock">
+            <p id="feeName" class="text-uppercase m-0 w-50">Feed name</p>
+            <div class="d-grid justify-content-center" id="ticketQuantityBlock">
+                <div class="input-group text-center">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="decreaseButton">-</button>
+                    <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2" data-montant="0">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="increaseButton">+</button>
                 </div>
-                <p id="feePrice" class="m-0"></p>
+            </div>
+            <p id="feePrice" class="m-0 w-25 text-end"></p>
         </div>
-        <div class="d-lg-flex justify-content-between fees-block my-3 w-100">
-            <p class="text-uppercase m-0">Feed name</p>
-            <div class="ticket-quantity-block d-grid justify-content-center">
-                <div class="input-group text-center w-75">
-                    <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
+        <div class="d-sm-flex justify-content-between my-3 w-100" id="feesBlock">
+            <p id="feeName" class="text-uppercase m-0 w-50">Feed name</p>
+            <div class="d-grid justify-content-center" id="ticketQuantityBlock">
+                <div class="input-group text-center">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="decreaseButton">-</button>
                     <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2" data-montant="12">
-                    <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
-                </div>
-                <div class="input-error text-center mt-2 visually-hidden" id="alert">
-                    <small>Only a number value is valid</small>
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="increaseButton">+</button>
                 </div>
             </div>
-            <p id="feePrice" class="m-0"></p>
+            <p id="feePrice" class="m-0 w-25 text-end"></p>
         </div>
-        <div class="d-lg-flex justify-content-between fees-block my-3 w-100">
-            <p class="text-uppercase m-0">Feed name</p>
-            <div class="ticket-quantity-block d-grid justify-content-center">
-                <div class="input-group text-center w-75">
-                    <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
+        <div class="d-sm-flex justify-content-between my-3 w-100" id="feesBlock">
+            <p id="feeName" class="text-uppercase m-0 w-50">Feed name</p>
+            <div class="d-grid justify-content-center" id="ticketQuantityBlock">
+                <div class="input-group text-center">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="decreaseButton">-</button>
                     <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2" data-montant="4">
-                    <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
-                </div>
-                <div class="input-error text-center mt-2 visually-hidden" id="alert">
-                    <small>Only a number value is valid</small>
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="increaseButton">+</button>
                 </div>
             </div>
-            <p id="feePrice" class="m-0"></p>
+            <p id="feePrice" class="m-0 w-25 text-end"></p>
         </div>
     </div>
     <script src="functions.js"></script>

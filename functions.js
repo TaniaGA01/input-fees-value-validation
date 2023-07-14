@@ -1,76 +1,73 @@
-const getDecreaseBtn = document.querySelectorAll('#decrease')
+const getDecreaseBtn = document.querySelectorAll('#decreaseButton')
 const getQuantityInput = document.querySelectorAll('.quantity-input')
-const getIncreaseBtn = document.querySelectorAll('#increase')
-const getFeePriceParagraph = document.querySelectorAll('#feePrice')
-
 const decreaseBtnsArray = Array.from(getDecreaseBtn)
 const inputsArray = Array.from(getQuantityInput)
-
 const regexExp = {
     inputNumber: /^[0-9]{0,2}$/
 }
 
-const fieldValidation = (regexExp,iElement) => {
+const fieldValidation = (regexExp, iElement) => {
+
+    const decreaseButton = iElement.parentElement.children.decreaseButton
+    const increaseButton = iElement.parentElement.children.increaseButton
 
     if(iElement.value === '0') {
-        iElement.parentElement.parentElement.lastElementChild.classList.add(`visually-hidden`);
-        iElement.parentElement.firstElementChild.classList.add('disabled');
-        iElement.parentElement.lastElementChild.classList.remove('disabled');
+        decreaseButton.classList.add('disabled');
+        increaseButton.classList.remove('disabled');
     }else if (iElement.value === ``){
         iElement.value = '0'
-        iElement.parentElement.parentElement.lastElementChild.classList.add(`visually-hidden`);
-        iElement.parentElement.firstElementChild.classList.add('disabled');
-        iElement.parentElement.lastElementChild.classList.remove('disabled');
+        decreaseButton.classList.add('disabled');
+        increaseButton.classList.remove('disabled');
+    }else if(iElement.value[0] === '0') {
+        iElement.value = '0'
+        decreaseButton.classList.add('disabled');
     }else if(regexExp.test(iElement.value)) {
-        iElement.parentElement.parentElement.lastElementChild.classList.add(`visually-hidden`);
-        iElement.parentElement.firstElementChild.classList.remove('disabled');
+        decreaseButton.classList.remove('disabled');
     }else {
         iElement.value = '0'
-        iElement.parentElement.parentElement.lastElementChild.classList.remove(`visually-hidden`);
-        iElement.parentElement.firstElementChild.classList.add('disabled');
-        setTimeout(() => {
-            iElement.parentElement.parentElement.lastElementChild.classList.add(`visually-hidden`)
-        }, 3000);
+        decreaseButton.classList.add('disabled');
     }
 }
 
 for (const input of inputsArray) {
 
-    const paragraph = input.parentElement.parentElement.parentElement.children.feePrice
-    if(input.attributes['data-montant'].value === '0'){
-        paragraph.innerHTML = 'Gratuit'
-    }else{
-        paragraph.innerHTML = input.attributes['data-montant'].value + '€ TTC'
-    }
-
     decreaseBtnsArray.forEach(decreaseBtn => {
         decreaseBtn.classList.add('disabled')
     })
 
+    const paragraph = input.parentElement.parentElement.parentElement.children.feePrice
+    const decreaseButton = input.parentElement.children.decreaseButton
+    const increaseButton = input.parentElement.children.increaseButton
+    
     const changePrice = () => {
         if(input.attributes['data-montant'].value === '0'){
             paragraph.innerHTML = 'Gratuit'
-        }else{
+        }else if(input.value === '0' || input.value === '00'){
+            paragraph.innerHTML = input.attributes['data-montant'].value + '€ TTC'
+        }
+        else{
             paragraph.innerHTML = input.attributes['data-montant'].value * input.value + '€ TTC'
         }
     }
+    changePrice()
 
-    input.nextElementSibling.addEventListener('click', () => {
-        input.value++
-        input.previousElementSibling.classList.remove('disabled')
+    decreaseButton.addEventListener('click', () => {
+        input.value--
+        if(input.value === '0'){
+            decreaseButton.classList.add('disabled')
+        }
+        changePrice()
+    })
+
+    input.addEventListener('keyup', () => {
+        fieldValidation(regexExp.inputNumber, input);
         changePrice()
     })
     
-    input.previousElementSibling.addEventListener('click', () => {
-        input.value--
+    increaseButton.addEventListener('click', () => {
+        input.value++
+        decreaseButton.classList.remove('disabled')
         changePrice()
-    })
-
-    input.addEventListener('change', () => {
-        fieldValidation(regexExp.inputNumber, input);
-        if(input.attributes['data-montant'].value !== NaN){
-            changePrice()
-        }
     })
 }
 
