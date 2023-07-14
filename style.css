@@ -1,0 +1,32 @@
+/* Tania 12/07/2023 */
+:root{
+    --green:#198754;
+}
+
+/*.radio-validated {*/
+/*    border-color: var(--green);*/
+/*}*/
+.form-check-input:checked{
+    background-color: var(--green);
+    border-color: var(--green);
+}
+.radio-label-validated{
+    color: var(--green)
+}
+.input-error {
+    color: red;
+    font-size: 0.9rem;
+    line-height: 1rem;
+}
+/* .invalide-input{
+    border: 1px solid red;
+} */
+.fees-block .form-label{
+    margin-bottom: 0;
+              }
+.ticket-quantity-block {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
