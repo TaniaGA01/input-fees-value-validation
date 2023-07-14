@@ -9,65 +9,48 @@
 </head>
 <body>
     <div class="container py-5">
-        <div class="row align-items-center g-0 fees-block my-3">
-            <div class="col-12 col-lg-8 text-center text-lg-start">
+        
+        <div class="d-lg-flex justify-content-between fees-block my-3 w-100">
                 <p class="text-uppercase m-0">Feed name</p>
-            </div>
-            <div class="col-12 col-lg-3">
                 <div class="ticket-quantity-block d-grid justify-content-center">
                     <div class="input-group text-center w-75">
                         <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
-                        <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2">
+                        <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2" data-montant="0">
                         <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
                     </div>
                     <div class="input-error text-center mt-2 visually-hidden" id="alert">
                         <small>Only a number value is valid</small>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-1 text-center text-lg-end">
-                <p class="m-0"><strong>20 €</strong></p>
-            </div>
+                <p id="feePrice" class="m-0"></p>
         </div>
-        <div class="row align-items-center g-0 fees-block my-3">
-            <div class="col-12 col-lg-8 text-center text-lg-start">
-                <p class="text-uppercase m-0">Feed name</p>
-            </div>
-            <div class="col-12 col-lg-3">
-                <div class="ticket-quantity-block d-grid justify-content-center">
-                    <div class="input-group text-center w-75">
-                        <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
-                        <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2">
-                        <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
-                    </div>
-                    <div class="input-error text-center mt-2 visually-hidden" id="alert">
-                        <small>Only a number value is valid</small>
-                    </div>
+        <div class="d-lg-flex justify-content-between fees-block my-3 w-100">
+            <p class="text-uppercase m-0">Feed name</p>
+            <div class="ticket-quantity-block d-grid justify-content-center">
+                <div class="input-group text-center w-75">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
+                    <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2" data-montant="12">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
+                </div>
+                <div class="input-error text-center mt-2 visually-hidden" id="alert">
+                    <small>Only a number value is valid</small>
                 </div>
             </div>
-            <div class="col-12 col-lg-1 text-center text-lg-end">
-                <p class="m-0"><strong>20 €</strong></p>
-            </div>
+            <p id="feePrice" class="m-0"></p>
         </div>
-        <div class="row align-items-center g-0 fees-block my-3">
-            <div class="col-12 col-lg-8 text-center text-lg-start">
-                <p class="text-uppercase m-0">Feed name</p>
-            </div>
-            <div class="col-12 col-lg-3">
-                <div class="ticket-quantity-block d-grid justify-content-center">
-                    <div class="input-group text-center w-75">
-                        <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
-                        <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2">
-                        <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
-                    </div>
-                    <div class="input-error text-center mt-2 visually-hidden" id="alert">
-                        <small>Only a number value is valid</small>
-                    </div>
+        <div class="d-lg-flex justify-content-between fees-block my-3 w-100">
+            <p class="text-uppercase m-0">Feed name</p>
+            <div class="ticket-quantity-block d-grid justify-content-center">
+                <div class="input-group text-center w-75">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="decrease">-</button>
+                    <input type="text" class="form-control text-center quantity-input" aria-label="0" aria-describedby="button-addon2" value="0" maxlength="2" data-montant="4">
+                    <button class="btn btn-outline-secondary rounded-1" type="button" id="increase">+</button>
+                </div>
+                <div class="input-error text-center mt-2 visually-hidden" id="alert">
+                    <small>Only a number value is valid</small>
                 </div>
             </div>
-            <div class="col-12 col-lg-1 text-center text-lg-end">
-                <p class="m-0"><strong>20 €</strong></p>
-            </div>
+            <p id="feePrice" class="m-0"></p>
         </div>
     </div>
     <script src="functions.js"></script>

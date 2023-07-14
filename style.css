@@ -1,6 +1,10 @@
 /* Tania 12/07/2023 */
 :root{
     --green:#198754;
+    --blue-deep: #183A5A;
+    --blue-normal:#1B60A2;
+    --gray-block:#a7a7a7;
+
 }
 
 /*.radio-validated {*/
@@ -18,9 +22,9 @@
     font-size: 0.9rem;
     line-height: 1rem;
 }
-/* .invalide-input{
-    border: 1px solid red;
-} */
+/* 
+    exceptions
+*/
 .fees-block .form-label{
     margin-bottom: 0;
               }
@@ -29,4 +33,16 @@
     justify-content: center;
     justify-items: center;
 }
-
+.btn-outline-secondary {
+    color: var(--blue-normal);
+    border-color: var(--blue-normal);
+}
+.btn-outline-secondary:hover{
+    color: white;
+    background-color: var(--blue-normal);
+    border-color: var(--blue-normal);
+}
+.btn-outline-secondary.disabled {
+    color: var(--gray-block);
+    border-color: var(--gray-block);
+}
