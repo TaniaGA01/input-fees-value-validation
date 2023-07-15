@@ -15,7 +15,6 @@ const fieldValidation = (regexExp, iElement) => {
         decreaseButton.classList.add('disabled');
         increaseButton.classList.remove('disabled');
     }else if (iElement.value === ``){
-        iElement.value = '0'
         decreaseButton.classList.add('disabled');
         increaseButton.classList.remove('disabled');
     }else if(iElement.value[0] === '0') {
@@ -29,20 +28,21 @@ const fieldValidation = (regexExp, iElement) => {
     }
 }
 
+for (const decreaseBtn of decreaseBtnsArray) {
+    decreaseBtn.classList.add('disabled')
+}
+
 for (const input of inputsArray) {
-
-    decreaseBtnsArray.forEach(decreaseBtn => {
-        decreaseBtn.classList.add('disabled')
-    })
-
+    
     const paragraph = input.parentElement.parentElement.parentElement.children.feePrice
     const decreaseButton = input.parentElement.children.decreaseButton
     const increaseButton = input.parentElement.children.increaseButton
     
+    
     const changePrice = () => {
         if(input.attributes['data-montant'].value === '0'){
             paragraph.innerHTML = 'Gratuit'
-        }else if(input.value === '0' || input.value === '00'){
+        }else if(input.value === '0' || input.value === '00' || input.value === ''){
             paragraph.innerHTML = input.attributes['data-montant'].value + '€ TTC'
         }
         else{
