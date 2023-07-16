@@ -1,7 +1,9 @@
 const getDecreaseBtn = document.querySelectorAll('#decreaseButton')
 const getQuantityInput = document.querySelectorAll('.quantity-input')
+const getAllParagraphFeePrice = document.querySelectorAll('#feePrice')
 const decreaseBtnsArray = Array.from(getDecreaseBtn)
 const inputsArray = Array.from(getQuantityInput)
+const paragraphsArray = Array.from(getAllParagraphFeePrice)
 const regexExp = {
     inputNumber: /^[0-9]{0,2}$/
 }
@@ -86,48 +88,31 @@ for (const input of inputsArray) {
     
     input.addEventListener('keyup', () => {
         fieldValidation(regexExp.inputNumber, input);
-        
-        let totalValue = totalArray.filter(item => item !== ticketFee)
-        if(input.value === '0'){
-            
-            
-            if(totalValue.length !== 0){
-                total = totalValue.reduce((total, item) => total + item)
-                totalText.innerHTML = total
-                console.log('totalValue keyup if', totalValue)
-                totalArray =[]
-                
-            }else{
-                totalArray.push(parseInt(paragraph.innerHTML))
-                total = totalArray.reduce((total, item) => total + item)
-                console.log('totalArray keyup', totalArray)
-                totalText.innerHTML = total - ticketFee
-                totalArray = []
 
+        let arrayParagraphs = []
+        for (let index = 0; index < inputsArray.length; index++) {
+            const element = inputsArray[index];
+            if(element.value !== '0' && input.value !== ``){
+                arrayParagraphs.push(parseInt(element.parentElement.parentElement.parentElement.querySelector('#feePrice').innerHTML))
+                total = arrayParagraphs.reduce((total, item) => total + item)
+                totalText.innerHTML = total
             }
         }
-        totalValue = []
         
         changePrice()
     })
 
     input.addEventListener('change', () => {
         fieldValidation(regexExp.inputNumber, input);
-            if(input.value === '0'){
-                // debugger
-                let totalValue = totalArray.filter(item => item !== ticketFee)
-                 if(totalValue.length !== 0){
-                    total = totalValue.reduce((total, item) => total + item)
+        
+            let arrayParagraphs = []
+            for (let index = 0; index < inputsArray.length; index++) {
+                const element = inputsArray[index];
+                if(element.value !== '0' && input.value !== ``){
+                    arrayParagraphs.push(parseInt(element.parentElement.parentElement.parentElement.querySelector('#feePrice').innerHTML))
+                    total = arrayParagraphs.reduce((total, item) => total + item)
                     totalText.innerHTML = total
-                    console.log('totalValue change if', totalValue)
-                    totalArray =[]
-                 }
-                    
-            }else{
-                totalArray.push(parseInt(paragraph.innerHTML))
-                total = totalArray.reduce((total, item) => total + item)
-                console.log('totalArray change', totalArray)
-                totalText.innerHTML = total
+                }
             }
         changePrice()
     })
