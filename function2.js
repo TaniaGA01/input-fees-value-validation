@@ -32,7 +32,7 @@ for (const decreaseBtn of decreaseBtnsArray) {
     decreaseBtn.classList.add('disabled')
 }
 
-let totalText = document.querySelector('#total')
+const totalText = document.querySelector('#total')
 let totalArray=[]
 let total = '0'
 
@@ -46,13 +46,10 @@ for (const input of inputsArray) {
     const changePrice = () => {
         if(input.attributes['data-montant'].value === '0'){
             paragraph.innerHTML = 'Gratuit'
-            paragraph.nextElementSibling.style.display = 'none'
         }else if(input.value === '0' || input.value === '00' || input.value === ''){
-            decreaseButton.classList.add('disabled')
             paragraph.innerHTML = ticketFee
         }
         else{
-            decreaseButton.classList.remove('disabled')
             paragraph.innerHTML = ticketFee * input.value
         }
     }
@@ -63,9 +60,12 @@ for (const input of inputsArray) {
         fieldValidation(regexExp.inputNumber, input);
 
         if(input.value === '0'){
+            decreaseButton.classList.add('disabled')
             
+            const index = totalArray.indexOf(ticketFee);
+            const newTotalArray = totalArray.splice(ticketFee, index );
             totalArray = []
-            totalArray.push(parseInt(totalText.innerHTML) - ticketFee) 
+            totalArray = newTotalArray
             total = total - ticketFee
             totalText.innerHTML = total 
             
@@ -83,71 +83,30 @@ for (const input of inputsArray) {
 
         changePrice() 
     })
-    
+
     input.addEventListener('keyup', () => {
         fieldValidation(regexExp.inputNumber, input);
-        
-        let totalValue = totalArray.filter(item => item !== ticketFee)
-        if(input.value === '0'){
-            
-            
-            if(totalValue.length !== 0){
-                total = totalValue.reduce((total, item) => total + item)
-                totalText.innerHTML = total
-                console.log('totalValue keyup if', totalValue)
-                totalArray =[]
-                
-            }else{
-                totalArray.push(parseInt(paragraph.innerHTML))
-                total = totalArray.reduce((total, item) => total + item)
-                console.log('totalArray keyup', totalArray)
-                totalText.innerHTML = total - ticketFee
-                totalArray = []
-
-            }
-        }
-        totalValue = []
-        
         changePrice()
     })
-
     input.addEventListener('change', () => {
-        fieldValidation(regexExp.inputNumber, input);
-            if(input.value === '0'){
-                // debugger
-                let totalValue = totalArray.filter(item => item !== ticketFee)
-                 if(totalValue.length !== 0){
-                    total = totalValue.reduce((total, item) => total + item)
-                    totalText.innerHTML = total
-                    console.log('totalValue change if', totalValue)
-                    totalArray =[]
-                 }
-                    
-            }else{
-                totalArray.push(parseInt(paragraph.innerHTML))
-                total = totalArray.reduce((total, item) => total + item)
-                console.log('totalArray change', totalArray)
-                totalText.innerHTML = total
-            }
-        changePrice()
-    })
-
-    increaseButton.addEventListener('click', () => {
-        input.value++
-        
-        fieldValidation(regexExp.inputNumber, input);
-        
-        totalArray.push(ticketFee)
+        totalArray.push(parseInt(paragraph.innerHTML))
         total = totalArray.reduce((total, item) => total + item)
         totalText.innerHTML = total
-
-        changePrice()
-        
     })
+    
+    increaseButton.addEventListener('click', () => {
+        input.value++
+        decreaseButton.classList.remove('disabled')
+        fieldValidation(regexExp.inputNumber, input);
+        
 
-    document.addEventListener('click', () => {
-        if(input.value === ''){
-            input.value = 0
+        if(input.value !== '0'){
+            totalArray.push(ticketFee)
+            total = totalArray.reduce((total, item) => total + item)
+            totalText.innerHTML = total
         }
+        
+        changePrice()
+
     })
 }
